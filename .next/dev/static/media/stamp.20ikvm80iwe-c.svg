@@ -1,0 +1,7 @@
+<svg viewBox="0 0 150 150">
+    <circle cx="75" cy="75" r="68" fill="none" stroke="#C98A3B" strokeWidth="2.5" strokeDasharray="3 4" />
+    <circle cx="75" cy="75" r="58" fill="none" stroke="#C98A3B" strokeWidth="1.5" />
+    <text x="75" y="63" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12.5" font-weight="500" fill="#7A551F" letter-spacing="2">COMING</text>
+    <text x="75" y="85" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="17" font-weight="700" fill="#7A551F" letter-spacing="3">SOON</text>
+    <text x="75" y="102" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#B4914F" letter-spacing="1.5">IMARAT · DIGITAL</text>
+</svg>
