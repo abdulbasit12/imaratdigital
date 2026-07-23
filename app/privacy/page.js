@@ -127,7 +127,7 @@ export default function PrivacyPolicy() {
                 gap: 28,
             }}>
                 {/* Sticky nav */}
-                <nav style={{ position: 'sticky', top: 24, alignSelf: 'start', display: window.innerWidth < 768 ? 'none' : 'block' }}>
+                <nav style={{ position: 'sticky', top: 24, alignSelf: 'start', display: 'block' }}>
                     <div style={{
                         background: '#fff', borderRadius: 14, padding: 10,
                         boxShadow: '0 1px 3px rgba(30,90,168,0.08)',
