@@ -1,4 +1,5 @@
-import admin from 'firebase-admin';
+import { initializeApp, getApps, getApp, cert } from 'firebase-admin/app';
+import { getMessaging } from 'firebase-admin/messaging';
 
 function formatPrivateKey(key) {
     return key.replace(/\\n/g, '\n');
@@ -12,13 +13,13 @@ export function initFirebaseAdmin() {
     if (!projectId || !clientEmail || !privateKey) {
         throw new Error('Missing Firebase Admin environment variables.');
     }
-
-    if (admin.apps.length > 0) {
-        return admin.app();
+    console.warn(getApps()?.length)
+    if (getApps()?.length > 0) {
+        return getApp();
     }
 
-    return admin.initializeApp({
-        credential: admin.credential.cert({
+    return initializeApp({
+        credential: cert({
             projectId,
             clientEmail,
             privateKey: formatPrivateKey(privateKey),
@@ -26,4 +27,4 @@ export function initFirebaseAdmin() {
     });
 }
 
-export const firebaseMessageing = () => initFirebaseAdmin().messaging()
+export const firebaseMessageing = () => getMessaging(initFirebaseAdmin())
