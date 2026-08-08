@@ -10,7 +10,7 @@ const db = getFirestore();
 
 export const monthlySync = onSchedule(
     {
-        schedule: "0 0 1 * *",       // 2 AM on the 1st of every month
+        schedule: "0 0 1 * *",
         timeZone: "Asia/Karachi",
         region: "asia-south1",
         memory: "256MiB",
