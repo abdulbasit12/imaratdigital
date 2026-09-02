@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 
 const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://sip.imaratdigital.app",
+    "Access-Control-Allow-Origin": "https://sip.imaratdigital.app/",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization"
 }
