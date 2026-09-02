@@ -10,7 +10,7 @@ const db = getFirestore();
 
 export const monthlySync = onSchedule(
     {
-        schedule: "0 0 1 * *",
+        schedule: "0 12 1 * *",
         timeZone: "Asia/Karachi",
         region: "asia-south1",
         memory: "256MiB",
@@ -62,20 +62,20 @@ async function runMonthlySyncForAllUsers() {
             let openingBalance;
             const prevClosingSnap = await userDoc.ref.collection("monthlyClosing").doc(openingMonthId).get();
             if (prevClosingSnap.exists) {
-                openingBalance = prevClosingSnap.data().closingBalance ?? 0;
+                openingBalance = Number(prevClosingSnap.data().closingBalance) ?? 0;
             } else {
-                openingBalance = userData.openingBalance ?? 0;
+                openingBalance = Number(userData.openingBalance) ?? 0;
             }
 
             // 2. This user's expenses doc for the closing month
             const expensesSnap = await userDoc.ref.collection("expenses").doc(closingMonthId).get();
             const expensesData = expensesSnap.exists ? expensesSnap.data() : {};
 
-            const totalCollection = expensesData.totalCollection ?? 0;
+            const totalCollection = Number(expensesData.totalCollection) ?? 0;
 
             // "expenses" assumed to be an array of entries, each with an `amount` field — adjust if different
             const expensesList = Array.isArray(expensesData.expenses) ? expensesData.expenses : [];
-            const totalExpenses = expensesList.reduce((sum, e) => sum + (e.amount ?? 0), 0);
+            const totalExpenses = expensesList.reduce((sum, e) => sum + (Number(e.amount) ?? 0), 0);
 
             // 3. Closing balance
             const closingBalance = openingBalance + totalCollection - totalExpenses;
