@@ -1,14 +1,19 @@
 import { NextResponse } from "next/server"
 
-const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://sip.imaratdigital.app",
+const allowedOrigins = new Set([
+    "https://sip.imaratdigital.app",
+    "http://localhost:5173"
+])
+
+const getCorsHeaders = (origin) => ({
+    ...(allowedOrigins.has(origin) ? { "Access-Control-Allow-Origin": origin } : {}),
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
     "Vary": "Origin"
-}
+})
 
-export const OPTIONS = async () => {
-    return new NextResponse(null, { status: 204, headers: corsHeaders })
+export const OPTIONS = async (request) => {
+    return new NextResponse(null, { status: 204, headers: getCorsHeaders(request.headers.get("origin")) })
 }
 
 const decryptJson = async (encryptedPayload) => {
@@ -42,6 +47,7 @@ const validateInvoiceViaFbr = async (payload, token, type) => {
 }
 
 export const POST = async (request) => {
+    const corsHeaders = getCorsHeaders(request.headers.get("origin"))
     let obj = {
         success: true,
         data: {},
