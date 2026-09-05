@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import playBadge from '@/images/google-play-badge.png'
 
 export default function DownloadCTA() {
     return (
@@ -18,7 +19,7 @@ export default function DownloadCTA() {
                     className="inline-block transition-transform hover:scale-[1.04]"
                 >
                     <Image
-                        src="/google-play-badge.png"
+                        src={playBadge}
                         alt="Get it on Google Play"
                         width={200}
                         height={60}

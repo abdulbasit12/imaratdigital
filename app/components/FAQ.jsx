@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
+import eight from '@/images/8.png'
 
 const FAQS = [
     {
@@ -78,7 +79,7 @@ export default function FAQ() {
                 <div className="flex w-full justify-center md:w-2/5">
                     <div className="w-[220px] rotate-[6deg] rounded-[2.2rem] border-[6px] border-gray-100 bg-white shadow-2xl sm:w-[240px]">
                         <Image
-                            src="/dashboard-screenshot.png"
+                            src={eight}
                             alt="Imarat Digital dashboard"
                             width={774}
                             height={1496}

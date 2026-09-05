@@ -1,12 +1,19 @@
 import Image from 'next/image'
 import { LayoutGrid, Receipt, FileBarChart, Wallet } from 'lucide-react'
+import dashboard from '@/images/dashboard.png'
+import two from '@/images/2.png'
+import three from '@/images/3.png'
+import four from '@/images/4.png'
+import five from '@/images/5.png'
+import six from '@/images/6.png'
+import seven from '@/images/7.png'
 
 const SCREENS = [
-    { label: 'Dashboard', image: '/dashboard-screenshot.png' },
-    { label: 'Units', icon: LayoutGrid },
-    { label: 'Receipts', icon: Receipt },
-    { label: 'Reports', icon: FileBarChart },
-    { label: 'Payments', icon: Wallet },
+    { label: 'Dashboard', image: dashboard },
+    { label: 'Units', image: two },
+    { label: 'Receipts', image: three },
+    { label: 'Reports', image: four },
+    { label: 'Payments', image: five },
 ]
 
 export default function Screenshots() {

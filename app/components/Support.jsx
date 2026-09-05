@@ -72,7 +72,7 @@ export default function Support() {
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gray-200">
                         <Phone className="h-5 w-5 text-brand-ink" strokeWidth={1.75} />
                     </span>
-                    <span className="text-[14px] text-gray-600">+92 300 0000000</span>
+                    <span className="text-[14px] text-gray-600">+92 315 8472043</span>
                 </div>
                 <div className="flex items-center gap-4">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-gray-200">

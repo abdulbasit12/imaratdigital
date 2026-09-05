@@ -1,4 +1,6 @@
 import { Building2 } from 'lucide-react'
+import Image from 'next/image'
+import five from '@/images/5.png'
 
 const POINTS = [
     'Built specifically for residential and multi-unit buildings',
@@ -14,7 +16,6 @@ export default function About() {
         >
             <div className='w-[80%]'>
                 <div className="flex flex-col items-center gap-14 md:flex-row md:gap-10">
-                    {/* Left: copy */}
                     <div className="w-full md:w-1/2">
                         <p className="text-[15px] font-medium uppercase tracking-wide text-gray-500">
                             About <span className="font-extrabold text-brand-ink">Imarat Digital</span>
@@ -44,8 +45,12 @@ export default function About() {
                     <div className="flex w-full justify-center md:w-1/2">
                         <div className="flex h-[420px] w-[230px] flex-col items-center justify-center rounded-[2.2rem] border-[6px] border-white bg-gray-200 shadow-xl sm:w-[260px]">
                             <Building2 className="h-16 w-16 text-gray-400" strokeWidth={1.25} />
-                            <span className="mt-3 text-[13px] text-gray-400">
-                                Screenshot coming soon
+                            <span className="text-[13px] text-gray-400">
+                                <Image
+                                    src={five}
+                                    alt="Imarat Digital dashboard"
+                                    className="w-full w-[220px] h-[410px] rounded-[1.8rem]"
+                                />
                             </span>
                         </div>
                     </div>

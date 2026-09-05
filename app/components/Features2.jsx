@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Bell, ShieldCheck, FileText, UploadCloud } from 'lucide-react'
+import seven from '@/images/7.png'
 
 const FEATURES = [
     {
@@ -44,7 +45,7 @@ export default function Features() {
                     <div className="flex justify-center md:w-2/5">
                         <div className="w-[230px] rotate-[-6deg] rounded-[2.2rem] border-[6px] border-gray-100 bg-white shadow-2xl sm:w-[250px]">
                             <Image
-                                src="/dashboard-screenshot.png"
+                                src={seven}
                                 alt="Imarat Digital dashboard"
                                 width={774}
                                 height={1496}
