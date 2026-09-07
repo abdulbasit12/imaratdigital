@@ -53,12 +53,7 @@ export default function Support() {
                     required
                     className="w-full resize-none rounded-md border border-gray-200 bg-white px-4 py-3 text-[14px] text-brand-ink placeholder:text-gray-400 focus:border-brand focus:outline-none"
                 />
-                <button
-                    type="submit"
-                    className="w-full rounded-md bg-brand py-3 text-[13px] font-semibold uppercase tracking-wide text-white transition-colors hover:bg-brand-ink"
-                >
-                    Submit
-                </button>
+                <button type="submit" className="w-full rounded-md bg-brand py-3 text-[13px] font-semibold uppercase bg-gradient-to-r from-[#1B1240] to-[#1E5AA8] tracking-wide text-white transition-colors hover:bg-brand-ink">Submit</button>
                 {submitted && (
                     <p className="text-center text-[14px] text-green-600">
                         Thanks — we'll get back to you shortly.
