@@ -1,4 +1,3 @@
-import { Building2 } from 'lucide-react'
 import Image from 'next/image'
 import five from '@/images/5.png'
 
@@ -41,17 +40,13 @@ export default function About() {
                         </ul>
                     </div>
 
-                    {/* Right: placeholder mockup */}
                     <div className="flex w-full justify-center md:w-1/2">
-                        <div className="flex h-[420px] w-[230px] flex-col items-center justify-center rounded-[2.2rem] border-[6px] border-white bg-gray-200 shadow-xl sm:w-[260px]">
-                            <Building2 className="h-16 w-16 text-gray-400" strokeWidth={1.25} />
-                            <span className="text-[13px] text-gray-400">
-                                <Image
-                                    src={five}
-                                    alt="Imarat Digital dashboard"
-                                    className="w-full w-[220px] h-[410px] rounded-[1.8rem]"
-                                />
-                            </span>
+                        <div className="h-[420px] w-[230px] overflow-hidden rounded-[2.2rem] border-[6px] border-white bg-gray-200 shadow-xl sm:w-[260px]">
+                            <Image
+                                src={five}
+                                alt="Imarat Digital dashboard"
+                                className="h-full w-full object-cover"
+                            />
                         </div>
                     </div>
                 </div>

@@ -40,9 +40,9 @@ export default function Features() {
             </div>
 
             {/* Phone + feature list */}
-            <div className="flex flex-col w-full justify-center bg-white items-center gap-14 px-6 py-20 sm:px-10 md:flex-row md:items-center md:gap-16 lg:px-16">
-                <div className='w-[80%] flex flex-row'>
-                    <div className="flex justify-center md:w-2/5">
+            <div className="flex w-full flex-col items-center justify-center bg-white px-6 py-20 sm:px-10 lg:px-16">
+                <div className="flex w-[90%] flex-col items-center gap-14 sm:w-[80%] md:flex-row md:items-start md:gap-16">
+                    <div className="flex w-full justify-center md:w-2/5">
                         <div className="w-[230px] rotate-[-6deg] rounded-[2.2rem] border-[6px] border-gray-100 bg-white shadow-2xl sm:w-[250px]">
                             <Image
                                 src={seven}
