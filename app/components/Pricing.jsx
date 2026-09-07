@@ -1,17 +1,19 @@
-import { Check } from 'lucide-react'
+'use client'
+
+import { useState } from 'react'
 
 const PLANS = [
     {
         name: 'Free',
-        price: 'Rs 0',
-        period: '',
+        monthly: 0,
+        yearly: 0,
         features: ['Up to 10 units', '1 attachment per expense', 'Limited reports'],
         highlighted: false,
     },
     {
         name: 'Recommended',
-        price: 'Rs 499',
-        period: '/month',
+        monthly: 499,
+        yearly: 4990,
         features: [
             'Up to 50 units',
             '2 attachments per expense',
@@ -22,8 +24,8 @@ const PLANS = [
     },
     {
         name: 'Premium',
-        price: 'Rs 899',
-        period: '/month',
+        monthly: 899,
+        yearly: 8990,
         features: [
             '100+ units',
             '4 attachments per expense',
@@ -35,6 +37,8 @@ const PLANS = [
 ]
 
 export default function Pricing() {
+    const [yearly, setYearly] = useState(true)
+
     return (
         <section
             id="pricing"
@@ -48,65 +52,81 @@ export default function Pricing() {
                 grows.
             </p>
 
-            <div className="mt-14 flex flex-col items-center justify-center gap-8 md:flex-row md:items-end">
-                {PLANS.map((plan) => (
-                    <div
-                        key={plan.name}
-                        className={`w-full max-w-[300px] rounded-lg bg-white shadow-md ${plan.highlighted ? 'md:-translate-y-3 md:shadow-2xl' : ''
-                            }`}
-                    >
-                        <div className="border-b border-gray-100 px-8 py-8">
-                            <h3 className="text-[15px] font-semibold uppercase tracking-wide text-gray-500">
-                                {plan.name}
-                            </h3>
-                            <span className="mx-auto mt-3 block h-0.5 w-8 bg-brand" />
-                        </div>
+            {/* Toggle */}
+            <div className="mt-8 flex justify-center">
+                <div className="relative inline-flex rounded-full bg-gray-200 p-1">
+                    <button type="button" onClick={() => setYearly(false)} className={`relative z-10 rounded-full px-6 py-2 text-[14px] font-semibold transition-colors ${!yearly ? 'text-white' : 'text-gray-500 hover:text-brand-ink'}`} >
+                        <label>Monthly</label>
+                    </button>
+                    <button type="button" onClick={() => setYearly(true)} className={`relative z-10 flex items-center flex-col gap-2 rounded-full px-6 py-2 text-[14px] font-semibold transition-colors ${yearly ? 'text-white' : 'text-gray-500 hover:text-brand-ink'}`}>
+                        <label>Yearly</label>
+                    </button>
+                    <span className={`absolute inset-y-1 w-1/2 rounded-full bg-gradient-to-br from-[#1B1240] to-[#1E5AA8] transition-transform duration-300 ${yearly ? 'translate-x-full' : 'translate-x-0'}`} />
+                </div>
+            </div>
 
+            <div className="mt-14 flex flex-col items-center justify-center gap-8 md:flex-row md:items-stretch">
+                {PLANS.map((plan) => {
+                    const price = yearly ? plan.yearly : plan.monthly
+                    const period = plan.monthly === 0 ? '' : yearly ? '/year' : '/month'
+
+                    return (
                         <div
-                            className={`px-8 py-8 ${plan.highlighted
-                                    ? 'bg-gradient-to-br from-[#1B1240] to-[#1E5AA8] text-white'
-                                    : 'text-brand-ink'
+                            key={plan.name}
+                            className={`flex w-full max-w-[300px] flex-col overflow-hidden rounded-lg bg-white shadow-md ${plan.highlighted ? 'md:shadow-2xl' : ''
                                 }`}
                         >
-                            <span className="align-top text-[20px] font-semibold">Rs</span>
-                            <span className="text-[42px] font-extrabold">
-                                {plan.price.replace('Rs ', '')}
-                            </span>
-                            {plan.period && (
-                                <span
-                                    className={`text-[14px] ${plan.highlighted ? 'text-white/70' : 'text-gray-500'
-                                        }`}
-                                >
-                                    {plan.period}
-                                </span>
-                            )}
-                        </div>
+                            <div className="px-8 py-8">
+                                <h3 className="text-[17px] font-semibold uppercase tracking-wide text-gray-500">
+                                    {plan.name}
+                                </h3>
+                                <span className="mx-auto mt-3 block h-0.5 w-8 bg-brand" />
+                            </div>
 
-                        <ul className="space-y-4 px-8 py-8">
-                            {plan.features.map((feature) => (
-                                <li
-                                    key={feature}
-                                    className="flex items-center justify-center gap-2 text-[14px] text-gray-600"
-                                >
-                                    <Check className="h-4 w-4 shrink-0 text-brand" />
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className="px-8 pb-8">
-                            <button
-                                type="button"
-                                className={`w-full rounded-md py-3 text-[13px] font-semibold uppercase tracking-wide transition-colors ${plan.highlighted
-                                        ? 'bg-brand text-white hover:bg-brand-ink'
-                                        : 'bg-gray-100 text-brand-ink hover:bg-gray-200'
+                            <div
+                                className={`py-9 ${plan.highlighted
+                                        ? 'bg-gradient-to-br from-[#1B1240] to-[#1E5AA8] text-white'
+                                        : 'bg-gray-100 text-brand-ink'
                                     }`}
                             >
-                                Sign Up
-                            </button>
+                                <span className="align-top text-[20px] font-semibold">Rs</span>
+                                <span className="text-[42px] font-extrabold">{price}</span>
+                                {period && (
+                                    <span
+                                        className={`text-[14px] ${plan.highlighted ? 'text-white/70' : 'text-gray-500'
+                                            }`}
+                                    >
+                                        {period}
+                                    </span>
+                                )}
+                            </div>
+
+                            <ul className="flex-1">
+                                {plan.features.map((feature) => (
+                                    <li
+                                        key={feature}
+                                        className="border-b border-gray-100 px-8 py-4 text-[14px] text-gray-600"
+                                    >
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* <div className="px-8 py-8">
+                                <button
+                                    type="button"
+                                    className={`w-full rounded-md py-3 text-[13px] font-semibold uppercase tracking-wide transition-colors ${
+                                        plan.highlighted
+                                            ? 'bg-gradient-to-br from-[#1B1240] to-[#1E5AA8] text-white hover:opacity-90'
+                                            : 'bg-gray-100 text-brand-ink hover:bg-gray-200'
+                                    }`}
+                                >
+                                    Sign Up
+                                </button>
+                            </div> */}
                         </div>
-                    </div>
-                ))}
+                    )
+                })}
             </div>
         </section>
     )
