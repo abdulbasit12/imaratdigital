@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faFacebookF,
@@ -42,9 +43,13 @@ export default function Footer() {
                 ))}
             </div>
 
-            <p className="mt-6 text-[13px] text-gray-400">
-                © {new Date().getFullYear()} Decode Nexus System. All rights reserved.
-            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[13px] text-gray-400">
+                <p>© {new Date().getFullYear()} Decode Nexus System. All rights reserved.</p>
+                <span className="hidden sm:inline">·</span>
+                <Link href="/privacy" className="transition-colors hover:text-brand">
+                    Privacy Policy
+                </Link>
+            </div>
         </footer >
     )
 }
