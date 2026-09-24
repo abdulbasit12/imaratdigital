@@ -1,6 +1,7 @@
 import { setGlobalOptions } from "firebase-functions";
 import { onRequest } from "firebase-functions/v2/https";
 export { monthlySync } from './src/scheduled/monthlySync.js'
+export { deleteSubUser } from './src/deleteUser.js'
 
 setGlobalOptions({ maxInstances: 10 });
 
